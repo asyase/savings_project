@@ -1,0 +1,18 @@
+%wrapper-paddings {
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+
+  @media screen and (max-width: $mini-tablet) {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  @media screen and (max-width: $small-mobile) {
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}

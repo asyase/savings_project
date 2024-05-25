@@ -1,0 +1,41 @@
+.accordion {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.accordion-button:hover {
+    background-color: $light-blue;
+
+}
+
+.accordion-button:focus {
+   background-color: $light-blue;
+   box-shadow: none;
+}
+
+.accordion-button:active {
+    background-color: $light-blue;
+    border: none;
+
+}
+
+.accordion-item {
+    button {
+        font-size: 0.8rem;
+    }
+}
+.accordion-collapse {
+    font-size: 0.8rem;
+}
+@media screen and (max-width: $tablet) {
+    .accordion {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: $large-mobile) {
+    .accordion {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

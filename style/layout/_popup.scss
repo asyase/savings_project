@@ -1,0 +1,63 @@
+.ready-popup {
+
+  width: 24rem;
+  padding: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  margin-left: -12rem;
+  background-color: $light-blue;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 0.2rem 0.05rem $grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 6;
+  display: none;
+
+  &__close-btn {
+    @include close-btn;
+  }
+
+  &__icon {
+    width: 40%;
+    height: auto;
+  }
+
+  &__title,
+  &__text {
+    margin: 0;
+    color: $light-grey;
+    font-weight: 700;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  &.active {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: $large-mobile) {
+  .ready-popup {
+    width: 14rem;
+    margin-left: -7rem;
+    padding: 3rem 1rem 1rem 1rem;
+
+    &__title {
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+
+    &__text {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+  }
+}

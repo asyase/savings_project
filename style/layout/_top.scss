@@ -1,0 +1,364 @@
+//carousel
+.carousel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -1;
+
+  &-wrapper {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  &-item {
+    width: 100%;
+    height: 710px;
+    background-color: $grey;
+  }
+}
+
+@for $i from 1 through 3 {
+  .carousel__overlay-image-#{$i} {
+    background-image: url('../assets/image/carousel-#{$i}.jpg');
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.8;
+  }
+}
+
+//order
+.top-order {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 1rem;
+  padding-bottom: 2.5rem;
+
+  &__title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    max-width: 45%;
+    padding-right: 1rem;
+    color: $light-grey;
+  }
+
+  .order {
+    @include order;
+  }
+}
+
+//header and burger
+.header {
+  display: grid;
+  align-items: center;
+  grid-template-columns: min-content 7fr 3fr;
+  grid-template-areas: 'logo nav contacts';
+  position: relative;
+
+  .logo {
+    grid-area: logo;
+  }
+
+  & a {
+    color: $light-grey;
+  }
+
+  &__nav {
+    grid-area: nav;
+
+    &-container {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      margin: 0 -1.2rem 0 0;
+      font-size: 1rem;
+      font-weight: 700;
+
+      a:hover {
+        @include hover-underling-grey;
+      }
+    }
+
+    &-item {
+      white-space: nowrap;
+    }
+
+    &-item-burger {
+      display: none;
+    }
+  }
+
+  &__contacts {
+    grid-area: contacts;
+    display: flex;
+    justify-content: space-between;
+
+    &-socmedia {
+      display: flex;
+      gap: 1rem;
+
+
+    }
+
+    &-item {
+      transition: $transition;
+
+      &:hover {
+        @include hover-scale-down;
+      }
+    }
+
+    &-tels {
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      justify-content: center;
+      max-height: min-content;
+
+      a:hover {
+        @include hover-tel-dark-blue;
+      }
+    }
+  }
+}
+
+//burger
+.burger-open-btn {
+  grid-area: burger;
+  display: none;
+}
+
+.burger-close-btn {
+  display: none;
+  cursor: pointer;
+}
+
+.burger__fade {
+  width: 100%;
+  height: 100%;
+  background-color: $turquoise;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  opacity: 0.5;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.body-lock {
+  overflow: hidden;
+}
+
+//media queries
+@media screen and (max-width: $middle-desktop) {
+  .header {
+    padding-top: 1.4rem;
+    padding-bottom: 0.4rem;
+    grid-template-columns: min-content 8fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+            'logo nav'
+            'logo contacts';
+
+    &__nav-container {
+
+        justify-content: flex-end;
+        padding-bottom: 0.2rem;
+
+    }
+    &__contacts {
+      justify-content: flex-end;
+      padding-top: 0.2rem;
+      gap: 5rem;
+
+      &-item {
+        width: 1.6rem;
+        height: auto;
+        transition: $transition;
+
+        &:hover {
+          @include hover-scale-up;
+        }
+      }
+
+      &-tels {
+        flex-direction: row;
+        gap: 0.8rem;
+        align-items: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .carousel-item {
+    height: 680px;
+  }
+
+  .top-order__title {
+    font-size: 1.8rem;
+    max-width: 40%;
+  }
+
+  .header {
+    &__nav-container {
+      gap: 0.8rem;
+      font-size: 0.8rem;
+      padding-bottom: 0rem;
+    }
+
+    .logo img {
+      width: 10rem;
+      height: auto;
+    }
+
+    &__contacts {
+      padding-top: 0;
+    }
+  }
+}
+
+@media screen and (max-width: $mini-tablet) {
+  .header {
+    grid-template-columns: min-content 8fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'logo contacts burger';
+
+    //styles of nav container for burger
+    &__nav {
+      width: fit-content;
+      height: 20.5rem;
+      background-color: $blue;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 4;
+      padding: 2.5rem;
+      border-radius: 0.2rem;
+      box-shadow: 0 0 0.2rem 0.05rem $dark-blue;
+      transition: $transition;
+      transform: scale(0);
+      transform-origin: right top;
+
+      &.active {
+        transform: scale(1);
+      }
+
+      &-container {
+        list-style: none;
+        padding: 1rem 0 0 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.3rem;
+        align-items: flex-start;
+      }
+
+      &-item {
+        color: $light-grey;
+        font-weight: 800;
+        font-size: 1rem;
+
+        &-burger {
+        display: block;
+        }
+      }
+    }
+
+    &__contacts-tels {
+      display: none;
+    }
+  }
+
+  .burger-open-btn {
+    display: block;
+    cursor: pointer;
+    top: 2rem;
+    justify-self: end;
+    align-self: center;
+
+    & img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .burger-close-btn {
+    @include close-btn;
+  }
+
+  .carousel-item {
+    height: 300px;
+  }
+
+  .top-order {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 4.3rem;
+
+    &__title {
+      max-width: 80%;
+      height: 5.6rem;
+      padding-right: 0;
+      text-align: center;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@media screen and (max-width: $large-mobile) {
+  .top-order {
+    padding-top: 2rem;
+    gap: 5.2rem;
+
+    &__title {
+      max-width: 95%;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .top-order {
+    padding-top: 2.3rem;
+  }
+
+  .logo img {
+    width: 7.5rem;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: $medium-mobile) {
+  .top-order__title {
+    font-size: 1.4rem;
+  }
+
+  .header__contacts-socmedia {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $small-mobile) {
+  .header__contacts-item {
+    display: none;
+  }
+}

@@ -1,0 +1,240 @@
+.footer {
+  background-color: $light-blue-footer;
+
+  &__up {
+    display: grid;
+    align-items: center;
+    grid-template-columns: min-content 1fr min-content;
+    grid-template-areas: 'logo nav social';
+
+    border-bottom: 1px solid $dark-blue;
+    padding-bottom: 1.5rem;
+    padding-top: 0.5rem;
+
+    .logo {
+      grid-area: logo;
+    }
+
+    &-contact {
+      display: none;
+    }
+
+    &-nav{
+      grid-area: nav;
+
+      a:hover {
+        @include hover-underling-dark-blue;
+      }
+    }
+
+    &-wrapper {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+
+    &-social {
+      grid-area: social;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      &-icon:hover {
+        @include hover-scale-down;
+      }
+    }
+
+    &-link {
+      color: $dark-blue;
+      font-size: 1.2rem;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: $transition;
+    }
+  }
+
+  &__down {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+
+    & p {
+      margin: 0;
+    }
+
+    &-text {
+      @include footer-flex;
+    }
+
+    &-confid {
+      color: $dark-blue;
+      transition: $transition;
+
+      &:hover {
+        @include hover-bold;
+      }
+    }
+
+    &-contact {
+      font-weight: 700;
+      @include footer-flex;
+    }
+
+    &-tel {
+      color: $dark-blue;
+
+      &:hover {
+        @include hover-tel-light-blue;
+      }
+    }
+
+    &-itgirls {
+      @include footer-flex;
+
+      & img {
+        width: 7rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $middle-desktop) {
+  .footer__up {
+    &-link {
+      font-size: 1.1rem;
+    }
+
+    &-social {
+      padding-top: 0.2rem;
+
+      &-icon {
+        width: 1.6rem;
+        height: auto;
+        transition: $transition;
+
+        &:hover {
+          @include hover-scale-up;
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: $mini-desktop) {
+  .footer__up {
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+                      'logo nav'
+                      'logo social';
+    &-wrapper {
+      justify-content: flex-end;
+      gap: 2.5%;
+    }
+
+    &-social {
+      justify-content: flex-end;
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .footer__up {
+    padding-bottom: 1rem;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: 1fr min-content;
+    grid-template-areas:
+                      'logo nav'
+                      'contact social';
+    .logo {
+      align-self: start;
+    }
+
+    &-contact {
+      grid-area: contact;
+      @include footer-flex;
+
+      & a {
+        color: $dark-blue;
+        font-weight: 700;
+
+        &:hover {
+          @include hover-tel-light-blue;
+        }
+      }
+    }
+
+    &-wrapper {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    &-social {
+      padding-top: 0.7rem;
+    }
+  }
+
+  .footer__down-contact {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $large-mobile) {
+  .logo img {
+    width: 10rem;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: $medium-mobile) {
+  .footer__up {
+    padding-bottom: 0.7rem;
+    justify-items: start;
+    grid-template-columns: 1fr max-content;
+    grid-template-rows: repeat(3, min-content);
+    grid-template-areas:
+                      'logo contact'
+                      'nav social';
+
+    .logo {
+      padding-bottom: 0.7rem;
+
+      & img {
+        width: 7rem;
+        height: auto;
+      }
+    }
+
+    &-contact {
+      font-size: 0.8rem;
+      gap: 0.4rem;
+    }
+
+    &-wrapper {
+      align-items: flex-start;
+    }
+
+    &-social {
+      justify-self: end;
+      align-items: flex-end;
+      gap: 0.3rem;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .footer__down  {
+    flex-direction: column;
+    gap: 0.4rem;
+
+    &-confid,
+    &-creators {
+      font-size: 0.8rem;
+    }
+  }
+}

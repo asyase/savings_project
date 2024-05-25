@@ -1,0 +1,163 @@
+.comments {
+  &__border {
+    width: 10rem;
+    height: 0.25rem;
+    background: $turquoise;
+    margin: 0 auto 1rem auto;
+  }
+
+  &__carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &-button {
+      position: absolute;
+      max-width: 5%;
+      cursor: pointer;
+
+      &_left {
+        left: -1.5%;
+      }
+
+      &_right {
+        right: -1.5%;
+      }
+    }
+  }
+  &__container {
+    background-color: $light-grey;
+    text-align: center;
+  }
+
+  &__item {
+    margin: 1rem 0.875rem;
+    background-color: white;
+    border-radius: 5%;
+  }
+
+  &__img {
+    margin: 0.875rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  &__text {
+    font-size: 0.875rem;
+    height: 4.5rem;
+    padding: 0 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+  &__name {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+}
+
+.owl-carousel {
+  .owl-item img {
+    display: inline-block;
+    width: auto;
+  }
+  .owl-nav {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .owl-prev {
+    position: absolute;
+    left: -2rem;
+  }
+  .owl-next {
+    position: absolute;
+    right: -2rem;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .comments {
+    &__container {
+      grid-template-columns: repeat(4, 25%);
+    }
+    &__img {
+      margin: 0.6rem;
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+    &__text {
+      font-size: 0.75rem;
+      height: 4rem;
+    }
+  }
+}
+
+@media screen and (max-width: $mini-tablet) {
+  .comments {
+    &__container {
+      grid-template-columns: repeat(3, 33%);
+    }
+    &__text {
+      font-size: 0.7rem;
+      height: 3.5rem;
+      margin-bottom: 0;
+    }
+    &__carousel {
+      &-button {
+        max-width: 6%;
+
+        &_left {
+          left: -2.5%;
+        }
+
+        &_right {
+          right: -2.5%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $large-mobile) {
+  .comments {
+    &__container {
+      grid-template-columns: repeat(2, 50%);
+    }
+    &__img {
+      width: 3rem;
+      height: 3rem;
+    }
+    &__carousel {
+      &-button {
+        max-width: 9%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $medium-mobile) {
+  .comments {
+    &__container {
+      grid-template-columns: repeat(1, 100%);
+    }
+    &__img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    &__text {
+      font-size: 0.625rem;
+    }
+    &__name {
+      font-size: 0.7rem;
+    }
+    .owl-nav {
+      display: none;
+    }
+  }
+}
